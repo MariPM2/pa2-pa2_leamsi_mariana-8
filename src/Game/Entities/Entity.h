@@ -11,6 +11,7 @@ class Entity {
         int ox, oy, ow, oh;
         ofImage fightingSprite;
         ofImage overworldSprite;
+        //int currentHealth = 100;
 
     public:
         Entity(int ox, int oy, int ow, int oh, int fx, int fy, int fw, int fh, int health, int baseDamage, string fightingPath, string overworldPath);
@@ -31,4 +32,7 @@ class Entity {
         void setHealth(int health) { this->health = health; };
         int getDmg() { return baseDamage; };
         void setDmg(int baseDamage) { this->baseDamage = baseDamage; };
+
+        // int getCurrentHealth(){return currentHealth;};
+        // void setCurrentHealth(int currentHealth){this->currentHealth = currentHealth;};
 };

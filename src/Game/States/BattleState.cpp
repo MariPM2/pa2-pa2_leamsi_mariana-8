@@ -116,7 +116,7 @@ void BattleState::renderHealthBar()
 
     for (int i = 0; i < 3; i++)
     {
-        double playerHealthRatio = (double)currentPlayerHealth / (double)player->getHealth();
+        double playerHealthRatio = (double)currentPlayerHealth / (double)player->currHealth;
         double enemyHealthRatio = (double)currentEnemyHealth / (double)enemy->getHealth();
         if(playerHealthRatio < 0){
             playerHealthRatio = 0;

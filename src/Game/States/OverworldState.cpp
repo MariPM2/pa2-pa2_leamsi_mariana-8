@@ -55,6 +55,8 @@ void OverworldState::render()
             area->getEnemies().at(i)->renderOverworld();
         }
     }
+    ofSetColor(255);
+	ofDrawBitmapString("Player Health: "+to_string(player->getHealth())+"\nRemaining enemies: "+to_string(area->getRemainingEnemies()),10,20);
 }
 
 void OverworldState::keyPressed(int key)

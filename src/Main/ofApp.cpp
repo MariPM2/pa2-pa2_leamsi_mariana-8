@@ -117,7 +117,10 @@ void ofApp::draw()
 	if (currentState != nullptr)
 	{
 		currentState->render();
-	}
+	}/*
+	if(currentState==overworldState){
+
+	}*/
 }
 
 //--------------------------------------------------------------
