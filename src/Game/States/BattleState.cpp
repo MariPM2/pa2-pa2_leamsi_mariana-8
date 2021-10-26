@@ -41,6 +41,7 @@ void BattleState::tick()
         }
         else if (currentEnemyHealth <= 0)
         {
+            player->setHealth(currentPlayerHealth);
             setNextState("Win");
             setFinished(true);
             return;
