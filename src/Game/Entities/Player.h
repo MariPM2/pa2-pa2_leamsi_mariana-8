@@ -2,6 +2,7 @@
 
 #include "Entity.h" 
 #include "Animation.h"
+#include "Fighting.h"
 
 #define INIT_X 100
 #define INIT_Y 100
@@ -12,7 +13,7 @@
 #define OYDIMENSION 2560
 
 
-class Player : public Entity {
+class Player : public Fighting {
     private:
         Direction direction = Direction::up;
         int speed = 8;
@@ -21,7 +22,7 @@ class Player : public Entity {
         Animation *walkDown;
         Animation *walkLeft;
         Animation *walkRight;
-        Animation *fighting;
+        // Animation *fighting;
         vector<char> pressedKeys;
     
     public:
