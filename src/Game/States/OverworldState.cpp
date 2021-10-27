@@ -56,11 +56,14 @@ void OverworldState::render()
         }
     }
     ofSetColor(255);
-	ofDrawBitmapString("Player Health: "+to_string(player->getHealth())+"\nRemaining enemies: "+to_string(area->getRemainingEnemies()),10,20);
+	ofDrawBitmapString("Area: "+area->getName()+"\nPlayer Health: "+to_string(player->getHealth())+"\nRemaining enemies: "+to_string(area->getRemainingEnemies()),10,20);
 }
 
 void OverworldState::keyPressed(int key)
 {
+    // if(key == 'r'|| key == 'R'){
+    //         area->resetEnemies();
+    // }
     player->keyPressed(key);
 }
 
