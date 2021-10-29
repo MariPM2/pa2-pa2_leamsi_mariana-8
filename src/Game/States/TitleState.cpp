@@ -8,11 +8,12 @@ TitleState::TitleState() {
     temp.load("images/ui/title2.png");
     titleFrames.push_back(temp);
     titlescreen = new Animation(11, titleFrames);
-    setNextState("Overworld");
+    setNextState("LoadingState");
     music.load("audio/title.wav");
     music.setLoop(true);
     music.setVolume(0.25);
     music.play();
+    afterLoadingState="Overworld";
 }
 
 void TitleState::tick() {
@@ -25,7 +26,7 @@ void TitleState::render(){
 }
 
 void TitleState::keyPressed(int key) {
-    setNextState("Overworld");
+    setNextState("LoadingState");
     setFinished(true);
 }
 

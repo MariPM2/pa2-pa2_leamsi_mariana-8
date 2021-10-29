@@ -25,6 +25,9 @@ class State {
 		string getNextState(){
 			return nextState;
 		}
+		string getAfterLoadingState(){
+			return afterLoadingState;
+		}
 		void toggleMusic(){
 			if(music.isPlaying()){
 				music.stop();
@@ -44,5 +47,6 @@ class State {
 		string nextState;
 		ofSoundPlayer music;
 		bool finished = false;
+		string afterLoadingState;
 
 };

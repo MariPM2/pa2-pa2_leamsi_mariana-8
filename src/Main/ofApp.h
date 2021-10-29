@@ -6,7 +6,7 @@
 #include "BattleState.h"
 #include "WinState.h"
 #include "EndGameState.h"
-// #include "LoadingState.h"
+#include "LoadingState.h"
 
 class ofApp : public ofBaseApp{
 	public:
@@ -37,5 +37,5 @@ class ofApp : public ofBaseApp{
 		WinState *winState;
 		EndGameState *endGameState;
 		Player *player;
-		// LoadingState *loadingState;
+		LoadingState *loadingState;
 };

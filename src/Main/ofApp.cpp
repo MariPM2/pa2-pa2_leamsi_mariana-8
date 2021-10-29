@@ -12,10 +12,11 @@ void ofApp::setup()
 	overworldState = new OverworldState(player, currentArea);
 	battleState = new BattleState(player, currentArea);
 	winState = new WinState();
-	// loadingState = new LoadingState();
+	loadingState = new LoadingState();
 	endGameState = new EndGameState();
 
 	// Initial State
+	loadingState->setNextState("Overworld");
 	currentState = titleState;
 }
 
@@ -71,11 +72,7 @@ void ofApp::update()
 				battleState->setStage(currentArea->getStage());
 				overworldState->loadArea(currentArea);
 				currentState = titleState;
-			 }//else if (currentState->getNextState() == "LoadingState")
-			// {
-			// 	//loadingState->setNextState(currentState->getLoadingState())
-			// 	currentState = loadingState;
-			// }
+			 }
 			else if (currentState->getNextState() == "Overworld")
 			{
 				currentState = overworldState;
@@ -84,6 +81,11 @@ void ofApp::update()
 			{
 				battleState->startBattle(overworldState->getEnemy());
 				currentState = battleState;
+			}
+			else if (currentState->getNextState() == "LoadingState")
+			{
+				loadingState->setNextState(currentState->getAfterLoadingState());
+				currentState = loadingState;
 			}
 			else if (currentState->getNextState() == "Win")
 			{

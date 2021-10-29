@@ -7,6 +7,7 @@ OverworldState::OverworldState(Player *player, Area *area)
     loadArea(area);
     music.setVolume(0.25);
     music.setLoop(true);
+    afterLoadingState="Battle";
 }
 
 void OverworldState::loadArea(Area *area)
@@ -31,7 +32,7 @@ void OverworldState::tick()
             if (player->collides(area->getEnemies().at(i)))
             {
                 setEnemy(area->getEnemies().at(i));
-                setNextState("Battle");
+                setNextState("LoadingState");
                 setFinished(true);
             }
         }
