@@ -3,6 +3,7 @@
 BattleState::BattleState(Player *player, Area *area)
 {
     stage = area->getStage();
+    pauseState = new PauseState();
     music.load("audio/battle.wav");
     music.setLoop(true);
     music.setVolume(0.25);
@@ -32,6 +33,7 @@ void BattleState::startBattle(Enemy *enemy)
 
 void BattleState::tick()
 {
+    if(!pauseState->Paused()){
     if (canInteract)
     {
         if (currentPlayerHealth <= 0)
@@ -76,6 +78,7 @@ void BattleState::tick()
         resultTimer = 30;
         canInteract = false;
     }
+    }
 }
 
 void BattleState::render()
@@ -101,6 +104,10 @@ void BattleState::render()
         ofSetColor(255, 255, 255);
     button3.draw(102 * 4, 84 * 4, 192, 192);
     ofSetColor(255, 255, 255);
+
+    if(pauseState->Paused() == true){
+        pauseState->render();
+    }
 
     renderOutcome();
 
@@ -231,6 +238,7 @@ void BattleState::keyPressed(int key)
 {
     if (canInteract)
     {
+        if(pauseState->Paused() == false){
         if (key == OF_KEY_LEFT || key == 'a')
         {
             buttonChange.play();
@@ -271,6 +279,8 @@ void BattleState::keyPressed(int key)
                 break;
             }
         }
+    }
+        pauseState->keyPressed(key);
     }
 }
 

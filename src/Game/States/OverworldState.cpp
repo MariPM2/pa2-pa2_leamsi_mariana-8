@@ -8,6 +8,7 @@ OverworldState::OverworldState(Player *player, Area *area)
     music.setVolume(0.25);
     music.setLoop(true);
     afterLoadingState="Battle";
+    pauseState = new PauseState();
 }
 
 void OverworldState::loadArea(Area *area)
@@ -23,7 +24,10 @@ void OverworldState::loadArea(Area *area)
 
 void OverworldState::tick()
 {
-    player->tickOverworld();
+    if(!pauseState->Paused()){
+        player->tickOverworld();
+    }   
+
     for (unsigned int i = 0; i < area->getEnemies().size(); i++)
     {
         if (!area->getEnemies().at(i)->isDead())
@@ -44,6 +48,9 @@ void OverworldState::render()
 {
     overworldImage.drawSubsection(0, 0, camera->getDimensionX(), camera->getDimensionY(), camera->getLeftCornerX(), camera->getTopCornerY());
     player->renderOverworld();
+    if(pauseState->Paused() == true){
+        pauseState->render();
+    }
 
     for (unsigned int i = 0; i < area->getEnemies().size(); i++)
     {
@@ -66,6 +73,7 @@ void OverworldState::keyPressed(int key)
     //         area->resetEnemies();
     // }
     player->keyPressed(key);
+    pauseState->keyPressed(key);
 }
 
 void OverworldState::keyReleased(int key)

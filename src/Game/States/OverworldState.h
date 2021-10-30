@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "OverworldCamera.h"
+#include "PauseState.h"
 
 class OverworldState : public State
 {
@@ -29,4 +30,5 @@ class OverworldState : public State
         void keyReleased(int key);
         void mousePressed(int x, int y, int button);
         void reset();
+        PauseState *pauseState;
 };
