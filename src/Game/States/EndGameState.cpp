@@ -3,7 +3,7 @@
 EndGameState::EndGameState() {
     loseScreen.load("images/ui/losescreen.png");
     winScreen.load("images/ui/winscreen.png");
-    music.load("audio/ui/beep.wav");
+    music.load("audio/ui/EndSoundEffect.wav");
     win = false;
 }
 

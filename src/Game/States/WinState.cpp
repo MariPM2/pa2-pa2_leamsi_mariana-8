@@ -2,7 +2,7 @@
 
 WinState::WinState() {
     screen.load("images/ui/winscreen.png");
-    music.load("audio/ui/beep.wav");
+    music.load("audio/ui/WinSoundEffect.wav");
     afterLoadingState="Overworld";
 }
 

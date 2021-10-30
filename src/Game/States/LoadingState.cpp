@@ -1,16 +1,21 @@
 #include "LoadingState.h"
 
 LoadingState::LoadingState() {
-    vector<ofImage> loadingFrames;
+    vector<ofImage> loadingFrames = {};
     timer = 50;
     ofImage temp;
-    temp.load("images/ui/loading1.png");
-    music.load("audio/ui/boop.wav");
+    for (int i = 1; i < 5; i++)
+    {
+        temp.load("images/ui/Loading" + std::to_string(i == 5 ? 1 : i) + ".png");
+        loadingFrames.push_back(temp);
+    }
+
+    music.load("audio/ui/LoadingSoundEffect.wav");
     music.setLoop(true);
     music.setVolume(0.25);
     loadingFrames.push_back(temp);
 
-    loadingscreen = new Animation(1, loadingFrames);
+    loadingscreen = new Animation(5, loadingFrames);
     
 }
 

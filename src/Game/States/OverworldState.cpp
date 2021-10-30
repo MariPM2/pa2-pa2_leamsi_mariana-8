@@ -48,6 +48,7 @@ void OverworldState::render()
 {
     overworldImage.drawSubsection(0, 0, camera->getDimensionX(), camera->getDimensionY(), camera->getLeftCornerX(), camera->getTopCornerY());
     player->renderOverworld();
+
     if(pauseState->Paused() == true){
         pauseState->render();
     }
@@ -69,10 +70,12 @@ void OverworldState::render()
 
 void OverworldState::keyPressed(int key)
 {
-    // if(key == 'r'|| key == 'R'){
-    //         area->resetEnemies();
-    // }
     player->keyPressed(key);
+
+    if(key == 'r'|| key == 'R'){
+        area->resetEnemies();
+    }
+
     pauseState->keyPressed(key);
 }
 

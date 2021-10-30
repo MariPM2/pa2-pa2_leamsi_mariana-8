@@ -46,5 +46,4 @@ class BattleState : public State {
         void reset();
         void resetPlayer();
         PauseState *pauseState;
-
 };

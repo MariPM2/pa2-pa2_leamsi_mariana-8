@@ -239,6 +239,13 @@ void BattleState::keyPressed(int key)
     if (canInteract)
     {
         if(pauseState->Paused() == false){
+
+        if(key == 'h' || key == 'H'){
+            if(currentPlayerHealth < 100){
+                currentPlayerHealth = 100;
+            }
+        }
+
         if (key == OF_KEY_LEFT || key == 'a')
         {
             buttonChange.play();

@@ -6,6 +6,7 @@
 class LoadingState : public State
 {
     private:
+        Animation *load;
         ofImage loadingImage;
         Animation *loadingscreen;
     public:
