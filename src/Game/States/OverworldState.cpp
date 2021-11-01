@@ -28,6 +28,10 @@ void OverworldState::tick()
         player->tickOverworld();
     }   
 
+    for (StaticEntity *StaticEntity1: area->getStaticEntity()){
+        StaticEntity1->tickOverworld();
+    }
+
     for (unsigned int i = 0; i < area->getEnemies().size(); i++)
     {
         if (!area->getEnemies().at(i)->isDead())
@@ -43,6 +47,7 @@ void OverworldState::tick()
     }
     camera->tick();
 }
+
 
 void OverworldState::render()
 {
