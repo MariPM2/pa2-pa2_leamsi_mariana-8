@@ -31,5 +31,6 @@ class Area
         int getRemainingEnemies();
         Area* getNextArea() { return nextArea;};
         string getName(){return name;};
+        bool BossIsDead=false;
         
 };

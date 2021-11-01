@@ -27,8 +27,20 @@ BattleState::BattleState(Player *player, Area *area)
 
 void BattleState::startBattle(Enemy *enemy)
 {
+    // this->enemy = enemy;
+    // currentEnemyHealth = enemy->getHealth();
     this->enemy = enemy;
-    currentEnemyHealth = enemy->getHealth();
+    if(!flag){
+        currentEnemyHealth = enemy->getHealth();
+        flag=true;
+    }
+    Boss* boss=dynamic_cast<Boss*>(enemy);
+    if(boss!=nullptr){
+        music.load("audio/battle.wav");
+        music.setLoop(true);
+        music.setVolume(0.25);
+    }
+
 }
 
 void BattleState::tick()
@@ -44,10 +56,23 @@ void BattleState::tick()
         }
         else if (currentEnemyHealth <= 0)
         {
-            player->setHealth(currentPlayerHealth);
-            setNextState("Win");
-            setFinished(true);
-            return;
+            Boss* boss=dynamic_cast<Boss*>(enemy);
+            if(boss!=nullptr){
+                if(boss->getHasPhase()){
+                    player->setHealth(currentPlayerHealth);
+                    setNextState("Win");
+                    setFinished(true);
+                    return;
+                }else{
+                    boss->phase();
+                    currentEnemyHealth=boss->maxHealth;
+                }
+            }else{
+                player->setHealth(currentPlayerHealth);
+                setNextState("Win");
+                setFinished(true);
+                // return;
+            }
         }
     }
 

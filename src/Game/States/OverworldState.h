@@ -7,6 +7,8 @@
 #include "OverworldCamera.h"
 #include "PauseState.h"
 #include "BattleState.h"
+#include "Friend.h"
+#include "Boss.h"
 
 class OverworldState : public State
 {
@@ -32,4 +34,6 @@ class OverworldState : public State
         void mousePressed(int x, int y, int button);
         void reset();
         PauseState *pauseState;
+        int enemigo=0;
+
     };
