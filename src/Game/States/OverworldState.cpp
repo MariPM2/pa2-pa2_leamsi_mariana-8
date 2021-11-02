@@ -9,6 +9,7 @@ OverworldState::OverworldState(Player *player, Area *area)
     music.setLoop(true);
     afterLoadingState="Battle";
     pauseState = new PauseState();
+    player->setEnt(area->getStaticEntities());
 }
 
 void OverworldState::loadArea(Area *area)
@@ -60,9 +61,11 @@ void OverworldState::tick()
         area->getFriends().at(i)->tickOverworld();
     }
 
-    // for(Friend* f1 : area->getFriends()){
-    //     f1->tickOverworld();
-    // }
+    for(unsigned int i=0; i<area->getStaticEntities().size();i++){
+        area->getStaticEntities().at(i)->tickOverworld();
+    }
+
+    
 }
 
 void OverworldState::render()
@@ -94,14 +97,13 @@ void OverworldState::render()
             area->getFriends().at(i)->renderOverworld();
     }
 
-    // for(Friend* f1 : area->getFriends()){
-    //     int playerDistanceX = f1->getOX() - camera->getPlayerX();
-    //     int playerDistanceY = f1->getOY() - camera->getPlayerY();
-    //     f1->setRenderX(camera->getDimensionX() / 2 + playerDistanceX);
-    //     f1->setRenderY(camera->getDimensionY() / 2 + playerDistanceY);
-    //     f1->renderOverworld();
-    // }
-
+    for(unsigned int i=0; i<area->getStaticEntities().size();i++){
+        int playerDistanceX = area->getStaticEntities().at(i)->getOX() - camera->getPlayerX();
+            int playerDistanceY = area->getStaticEntities().at(i)->getOY() - camera->getPlayerY();
+            area->getStaticEntities().at(i)->setRenderX(camera->getDimensionX() / 2 + playerDistanceX);
+            area->getStaticEntities().at(i)->setRenderY(camera->getDimensionY() / 2 + playerDistanceY);
+            area->getStaticEntities().at(i)->renderOverworld();
+    }
 
     ofSetColor(255);
 	ofDrawBitmapString("Area: "+area->getName()+"\nPlayer Health: "+to_string(player->getHealth())+"\nRemaining enemies: "+to_string(area->getRemainingEnemies()),10,20);

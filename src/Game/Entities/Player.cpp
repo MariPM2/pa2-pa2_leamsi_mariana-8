@@ -40,6 +40,8 @@ void Player::tickOverworld()
 {
     if (!pressedKeys.empty())
     {
+        int X=ox;
+        int Y=oy;
         switch (pressedKeys[0])
         {
         case 'a':
@@ -72,6 +74,12 @@ void Player::tickOverworld()
             walkDown->tick();
             overworldSprite = walkDown->getCurrentFrame();
             break;
+        }
+        for(unsigned int i=0; i<ent.size(); i++){
+            if(collides(ent[i])){
+                ox=X;
+                oy=Y;
+            }
         }
     }
     else

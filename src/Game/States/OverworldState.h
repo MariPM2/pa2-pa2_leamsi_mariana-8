@@ -9,6 +9,7 @@
 #include "BattleState.h"
 #include "Friend.h"
 #include "Boss.h"
+#include "StaticEntity.h"
 
 
 class OverworldState : public State

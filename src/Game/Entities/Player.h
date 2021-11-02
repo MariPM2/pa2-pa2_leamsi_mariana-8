@@ -3,6 +3,7 @@
 #include "Entity.h" 
 #include "Animation.h"
 #include "Fighting.h"
+#include "StaticEntity.h"
 
 #define INIT_X 100
 #define INIT_Y 100
@@ -24,10 +25,11 @@ class Player : public Fighting {
         Animation *walkRight;
         // Animation *fighting;
         vector<char> pressedKeys;
+        vector<StaticEntity*> ent;
     
     public:
         Player(int health, int baseDamage);
-        virtual ~Player();
+        ~Player();
         void tickOverworld();
         void tickFighting();
         void renderOverworld();
@@ -35,4 +37,5 @@ class Player : public Fighting {
         void keyReleased(int key);
         void reset();
         int currHealth;
+        void setEnt(vector<StaticEntity*> ent){ this->ent=ent;};
 };
