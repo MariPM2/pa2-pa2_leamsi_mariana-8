@@ -59,17 +59,10 @@ void OverworldState::tick()
     for(unsigned int i=0; i<area->getFriends().size();i++){
         area->getFriends().at(i)->tickOverworld();
     }
-<<<<<<< HEAD
-
-    for(unsigned int i = 0; i < area->getStaticEntity().size(); i++){
-        area->getStaticEntity().at(i)->tickOverworld();
-    }
 
     // for(Friend* f1 : area->getFriends()){
     //     f1->tickOverworld();
     // }
-=======
->>>>>>> 968422c0dd9b2a84e38f157f92725f8824726e48
 }
 
 void OverworldState::render()
@@ -101,15 +94,6 @@ void OverworldState::render()
             area->getFriends().at(i)->renderOverworld();
     }
 
-<<<<<<< HEAD
-for(unsigned int i=0; i<area->getStaticEntity().size();i++){
-        int playerDistanceX = area->getStaticEntity().at(i)->getOX() - camera->getPlayerX();
-            int playerDistanceY = area->getStaticEntity().at(i)->getOY() - camera->getPlayerY();
-            area->getStaticEntity().at(i)->setRenderX(camera->getDimensionX() / 2 + playerDistanceX);
-            area->getStaticEntity().at(i)->setRenderY(camera->getDimensionY() / 2 + playerDistanceY);
-            area->getStaticEntity().at(i)->renderOverworld();
-    }
-
     // for(Friend* f1 : area->getFriends()){
     //     int playerDistanceX = f1->getOX() - camera->getPlayerX();
     //     int playerDistanceY = f1->getOY() - camera->getPlayerY();
@@ -119,8 +103,6 @@ for(unsigned int i=0; i<area->getStaticEntity().size();i++){
     // }
 
 
-=======
->>>>>>> 968422c0dd9b2a84e38f157f92725f8824726e48
     ofSetColor(255);
 	ofDrawBitmapString("Area: "+area->getName()+"\nPlayer Health: "+to_string(player->getHealth())+"\nRemaining enemies: "+to_string(area->getRemainingEnemies()),10,20);
 }
