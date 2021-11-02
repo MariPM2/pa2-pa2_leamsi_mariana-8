@@ -8,6 +8,7 @@
 #include "EndGameState.h"
 #include "LoadingState.h"
 #include "PauseState.h"
+// #include "Boss.h"
 
 class ofApp : public ofBaseApp{
 	public:

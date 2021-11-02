@@ -20,6 +20,9 @@ void OverworldState::loadArea(Area *area)
     music.setLoop(true);
     player->setOX(area->getEntrancePos().x);
     player->setOY(area->getEntrancePos().y);
+    area->getEnemies().back()->kill();
+    area->BossIsDead=false;
+    enemigo=area->getRemainingEnemies();
 }
 
 void OverworldState::tick()
@@ -36,12 +39,22 @@ void OverworldState::tick()
     {
         if (!area->getEnemies().at(i)->isDead())
         {
-            area->getEnemies().at(i)->tickOverworld();
+            Enemy* enemy=area->getEnemies().at(i);
+            enemy->tickOverworld();
+            
             if (player->collides(area->getEnemies().at(i)))
             {
                 setEnemy(area->getEnemies().at(i));
                 setNextState("LoadingState");
+                enemigo-=1;
                 setFinished(true);
+                if(enemigo==0){
+                    area->getEnemies().back()->revive();
+                }
+                Boss* boss=dynamic_cast<Boss*>(enemy);
+                if(boss!=nullptr){
+                    area->BossIsDead=true;
+                }
             }
         }
     }
@@ -50,10 +63,6 @@ void OverworldState::tick()
     for(unsigned int i=0; i<area->getFriends().size();i++){
         area->getFriends().at(i)->tickOverworld();
     }
-
-    // for(Friend* f1 : area->getFriends()){
-    //     f1->tickOverworld();
-    // }
 }
 
 
@@ -85,15 +94,6 @@ void OverworldState::render()
             area->getFriends().at(i)->setRenderY(camera->getDimensionY() / 2 + playerDistanceY);
             area->getFriends().at(i)->renderOverworld();
     }
-
-    // for(Friend* f1 : area->getFriends()){
-    //     int playerDistanceX = f1->getOX() - camera->getPlayerX();
-    //     int playerDistanceY = f1->getOY() - camera->getPlayerY();
-    //     f1->setRenderX(camera->getDimensionX() / 2 + playerDistanceX);
-    //     f1->setRenderY(camera->getDimensionY() / 2 + playerDistanceY);
-    //     f1->renderOverworld();
-    // }
-
 
     ofSetColor(255);
 	ofDrawBitmapString("Area: "+area->getName()+"\nPlayer Health: "+to_string(player->getHealth())+"\nRemaining enemies: "+to_string(area->getRemainingEnemies()),10,20);

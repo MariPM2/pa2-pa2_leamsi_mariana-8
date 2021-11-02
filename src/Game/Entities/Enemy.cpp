@@ -11,6 +11,7 @@ Enemy::Enemy(string id, int health, int baseDamage, string entityName, int ox, i
     vector<ofImage> rightFrames = {};
     vector<ofImage> fightingFrames = {};
     ofImage temp;
+    maxHealth=health;
 
     for (int i = 1; i < 5; i++)
     {
