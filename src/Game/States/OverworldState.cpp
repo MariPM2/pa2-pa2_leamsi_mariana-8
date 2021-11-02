@@ -10,6 +10,7 @@ OverworldState::OverworldState(Player *player, Area *area)
     afterLoadingState="Battle";
     pauseState = new PauseState();
     player->setEnt(area->getStaticEntities());
+    player->sefF(area->getFriends());
 }
 
 void OverworldState::loadArea(Area *area)
@@ -105,8 +106,9 @@ void OverworldState::render()
             area->getStaticEntities().at(i)->renderOverworld();
     }
 
-    ofSetColor(255);
+    ofSetColor(6,14,255);
 	ofDrawBitmapString("Area: "+area->getName()+"\nPlayer Health: "+to_string(player->getHealth())+"\nRemaining enemies: "+to_string(area->getRemainingEnemies()),10,20);
+    ofSetColor(255,255,255);
 }
 
 void OverworldState::keyPressed(int key)
@@ -115,6 +117,13 @@ void OverworldState::keyPressed(int key)
 
     if(key == 'r'|| key == 'R'){
         area->resetEnemies();
+    }
+    for(unsigned int i=0; i<area->getFriends().size();i++){
+        if(key == 'e' || key == 'E'){
+            if(player->collides(area->getFriends().at(i))){
+                area->getFriends().at(i)->talking=true;
+            }
+        }
     }
 
     pauseState->keyPressed(key);

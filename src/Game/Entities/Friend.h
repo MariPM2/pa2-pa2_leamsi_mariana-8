@@ -37,4 +37,5 @@ class Friend : public Entity {
         ofImage getSprite() { return overworldSprite;};
         ofRectangle getBounds();
         ofRectangle getBounds(int ox,int oy);
+        bool talking=false;
 };

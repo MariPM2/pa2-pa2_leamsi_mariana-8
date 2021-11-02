@@ -27,7 +27,7 @@ void ofApp::setupAreas()
 	//each in-game pixel is 4 * 1 screen pixel
 
 	vector<Enemy *> enemies2;
-	vector<Friend*> friend1;
+	vector<Friend*> friend2;
 	vector<StaticEntity*> SE2;
 	ofPoint entrancePosition2(4 * 110, 4 * 116);
 	Enemy *area2Enemy1 = new Enemy("21", 30, 6, "enemy2", 4 * 120, 4 * 342);
@@ -47,19 +47,20 @@ void ofApp::setupAreas()
 	enemies2.push_back(area2Enemy4);
 	enemies2.push_back(area2Enemy5);
 	enemies2.push_back(area2Enemy6);
-	friend1.push_back(area2Friend1);
+	friend2.push_back(area2Friend1);
 	enemies2.push_back(area2Boss1);
 	SE2.push_back(area2StaticEntity1);
 	SE2.push_back(area2StaticEntity2);
 	SE2.push_back(area2StaticEntity3);
-	area2 = new Area(NULL, "images/areas/area2.png", "audio/ice.wav", "images/stages/stage2.png", entrancePosition2, enemies2, "Ice World", friend1, SE2); 
+	area2 = new Area(NULL, "images/areas/area2.png", "audio/ice.wav", "images/stages/stage2.png", entrancePosition2, enemies2, "Ice World", friend2, SE2); 
 	vector<Enemy *> enemies1;
+	vector<Friend*> friend1;
 	vector<StaticEntity*> SE1;
 	ofPoint entrancePosition1(4 * 414, 4 * 566);
 	Enemy *area1Enemy1 = new Enemy("11", 20, 4, "enemy1", 4 * 480, 4 * 432);
 	Enemy *area1Enemy2 = new Enemy("12", 20, 4, "enemy1", 4 * 190, 4 * 204);
 	Enemy *area1Enemy3 = new Enemy("13", 20, 4, "enemy1", 4 * 420, 4 * 178);
-	Friend *area1Friend1 = new Friend("f11","friend1",4*250,4*424, 64, 64);
+	Friend *area1Friend1 = new Friend("f11","friend1",4*250,4*428, 64, 64);
 	Boss *area1Boss1 = new Boss("b11",60,12,"boss1", 4 * 140, 4 * 204, "images/entities/boss1/fightingframes/boss1-f1.png", "images/entities/boss1/downframes/boss1-ow-down1.png");
 	StaticEntity *area1StaticEntity1 = new StaticEntity("s11", "staticEntity1", 4*432, 4*468, 64, 64, "images/entities/StaticEntity1/pipe.png");
 	StaticEntity *area1StaticEntity2 = new StaticEntity("s12", "staticEntity2", 4*430, 4*260, 64, 100, "images/entities/StaticEntity1/pipe.png");

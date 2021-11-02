@@ -4,6 +4,7 @@
 #include "Animation.h"
 #include "Fighting.h"
 #include "StaticEntity.h"
+#include "Friend.h"
 
 #define INIT_X 100
 #define INIT_Y 100
@@ -26,6 +27,7 @@ class Player : public Fighting {
         // Animation *fighting;
         vector<char> pressedKeys;
         vector<StaticEntity*> ent;
+        vector<Friend*> f;
     
     public:
         Player(int health, int baseDamage);
@@ -38,4 +40,5 @@ class Player : public Fighting {
         void reset();
         int currHealth;
         void setEnt(vector<StaticEntity*> ent){ this->ent=ent;};
+        void sefF(vector<Friend*> f){ this->f=f;};
 };

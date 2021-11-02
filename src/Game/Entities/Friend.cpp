@@ -112,6 +112,12 @@ void Friend::renderOverworld()
     // ofDrawBitmapString("ow:" + to_string(ox), 100 + 125 * ((stoi(id) % 10) - 1), 140);
     // ofDrawBitmapString("oy:" + to_string(oy), 100 + 125 * ((stoi(id) % 10) - 1), 160);
     overworldSprite.draw(renderX, renderY, ow, oh);
+
+    if(talking){
+        ofSetColor(6,14,255);
+        ofDrawBitmapString("Hi, I'm Yoshi! I am your friend.\nTips: Press 'H' to get full health\n      Press'R' to respawn all defeated enemies\n      Beware of Bowser", renderX - 100, renderY-50);
+        ofSetColor(255,255,255);
+    }
 }
 
 

@@ -81,6 +81,12 @@ void Player::tickOverworld()
                 oy=Y;
             }
         }
+        for(unsigned int i=0; i<f.size(); i++){
+            if(collides(f[i])){
+                ox=X;
+                oy=Y;
+            }
+        }
     }
     else
     {
