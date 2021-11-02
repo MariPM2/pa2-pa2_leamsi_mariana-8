@@ -28,10 +28,6 @@ void OverworldState::tick()
         player->tickOverworld();
     }   
 
-    for (StaticEntity *StaticEntity1: area->getStaticEntity()){
-        StaticEntity1->tickOverworld();
-    }
-
     for (unsigned int i = 0; i < area->getEnemies().size(); i++)
     {
         if (!area->getEnemies().at(i)->isDead())
@@ -49,6 +45,10 @@ void OverworldState::tick()
 
     for(unsigned int i=0; i<area->getFriends().size();i++){
         area->getFriends().at(i)->tickOverworld();
+    }
+
+    for(unsigned int i = 0; i < area->getStaticEntity().size(); i++){
+        area->getStaticEntity().at(i)->tickOverworld();
     }
 
     // for(Friend* f1 : area->getFriends()){
@@ -84,6 +84,14 @@ void OverworldState::render()
             area->getFriends().at(i)->setRenderX(camera->getDimensionX() / 2 + playerDistanceX);
             area->getFriends().at(i)->setRenderY(camera->getDimensionY() / 2 + playerDistanceY);
             area->getFriends().at(i)->renderOverworld();
+    }
+
+for(unsigned int i=0; i<area->getStaticEntity().size();i++){
+        int playerDistanceX = area->getStaticEntity().at(i)->getOX() - camera->getPlayerX();
+            int playerDistanceY = area->getStaticEntity().at(i)->getOY() - camera->getPlayerY();
+            area->getStaticEntity().at(i)->setRenderX(camera->getDimensionX() / 2 + playerDistanceX);
+            area->getStaticEntity().at(i)->setRenderY(camera->getDimensionY() / 2 + playerDistanceY);
+            area->getStaticEntity().at(i)->renderOverworld();
     }
 
     // for(Friend* f1 : area->getFriends()){

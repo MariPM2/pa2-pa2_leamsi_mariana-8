@@ -27,7 +27,7 @@ class Player : public Fighting {
     
     public:
         Player(int health, int baseDamage);
-        ~Player();
+        virtual ~Player();
         void tickOverworld();
         void tickFighting();
         void renderOverworld();

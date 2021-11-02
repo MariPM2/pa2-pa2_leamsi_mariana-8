@@ -20,7 +20,7 @@ class OverworldState : public State
         Enemy *enemy;
         PauseState *pauseState;
         StaticEntity *staticEntity;
-        std::vector<StaticEntity*> staticEntity;
+        std::vector<StaticEntity*> staticEntities;
         
     public:
         OverworldState(Player *player, Area *area);
