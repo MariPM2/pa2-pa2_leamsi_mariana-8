@@ -6,6 +6,7 @@
 #include "Area.h"
 #include "Fighting.h"
 #include "PauseState.h"
+#include "Boss.h"
 
 enum Move {rock, paper, scissors, none};
 enum Outcome {win, lose, draw};
@@ -14,6 +15,7 @@ class BattleState : public State {
         ofImage stage;
         Player *player;
         Enemy *enemy;
+        Boss *boss;
         Move choice = Move::none;
         Outcome outcome = Outcome::draw;
         int enemyChoice = 0;
@@ -46,4 +48,5 @@ class BattleState : public State {
         void reset();
         void resetPlayer();
         PauseState *pauseState;
+        bool flag=false;
 };

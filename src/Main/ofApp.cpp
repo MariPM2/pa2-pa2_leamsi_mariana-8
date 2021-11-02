@@ -29,6 +29,7 @@ void ofApp::setupAreas()
 	vector<Enemy *> enemies2;
 	vector<StaticEntity*> staticEntity2;
 	vector<Friend*> friend1;
+	// vector<Boss*> boss1;
 	ofPoint entrancePosition2(4 * 110, 4 * 116);
 	Enemy *area2Enemy1 = new Enemy("21", 30, 6, "enemy2", 4 * 120, 4 * 342);
 	Enemy *area2Enemy2 = new Enemy("22", 30, 6, "enemy2", 4 * 254, 4 * 130);
@@ -38,6 +39,7 @@ void ofApp::setupAreas()
 	Enemy *area2Enemy6 = new Enemy("26", 30, 6, "enemy2", 4 * 194, 4 * 532);
 	StaticEntity *area2StaticEntity2 = new StaticEntity("40", "StaticEntity2", 4 * 205, 4 * 200, 64, 64);
 	Friend *area2Friend1 = new Friend("60","friend1",4*198,4*200, 64, 64);
+	Boss *area2Boss1 = new Boss("31",60,12,"boss1", 4*320, 4*254, "images/entities/boss1/fightingframes/boss1-f1.png","images/entities/boss1/downframes/boss1-ow-down1.png" );
 	enemies2.push_back(area2Enemy1);
 	enemies2.push_back(area2Enemy2);
 	enemies2.push_back(area2Enemy3);
@@ -45,24 +47,42 @@ void ofApp::setupAreas()
 	enemies2.push_back(area2Enemy5);
 	enemies2.push_back(area2Enemy6);
 	friend1.push_back(area2Friend1);
+<<<<<<< HEAD
 	staticEntity2.push_back(area2StaticEntity2);
 	area2 = new Area(NULL, "images/areas/area2.png", "audio/ice.wav", "images/stages/stage2.png", entrancePosition2, enemies2, "Area 2", friend1, staticEntity2); 
 	vector<Enemy *> enemies1;
 	// vector<Friend*> friend1;
 	vector<StaticEntity*> staticEntity1;
+=======
+	enemies2.push_back(area2Boss1);
+	// boss1.push_back(area2Boss1);
+	area2 = new Area(NULL, "images/areas/area2.png", "audio/ice.wav", "images/stages/stage2.png", entrancePosition2, enemies2, "Area2", friend1); 
+	vector<Enemy *> enemies1;
+>>>>>>> 968422c0dd9b2a84e38f157f92725f8824726e48
 	ofPoint entrancePosition1(4 * 414, 4 * 566);
 	Enemy *area1Enemy1 = new Enemy("11", 20, 4, "enemy1", 4 * 480, 4 * 432);
 	Enemy *area1Enemy2 = new Enemy("12", 20, 4, "enemy1", 4 * 225, 4 * 178);
 	Enemy *area1Enemy3 = new Enemy("13", 20, 4, "enemy1", 4 * 420, 4 * 178);
+<<<<<<< HEAD
 	Friend *area1Friend1 = new Friend("60","friend1",4*140,4*400, 64, 64);
 	StaticEntity *area1StaticEntity1 = new StaticEntity("40", "StaticEntity1", 4 * 205, 4 * 200, 150, 150);
+=======
+	Friend *area1Friend1 = new Friend("50","friend1",4*140,4*400, 64, 64);
+	Boss *area1Boss1 = new Boss("31",60,12,"boss1", 4*320, 4*254, "images/entities/boss1/fightingframes/boss1-f1.png", "images/entities/boss1/downframes/boss1-ow-down1.png");
+>>>>>>> 968422c0dd9b2a84e38f157f92725f8824726e48
 	enemies1.push_back(area1Enemy1);
 	enemies1.push_back(area1Enemy2);
 	enemies1.push_back(area1Enemy3);
 	friend1.push_back(area1Friend1);
+<<<<<<< HEAD
 	staticEntity1.push_back(area1StaticEntity1);
 	
 	area1 = new Area(area2, "images/areas/area1.png", "audio/forest.wav", "images/stages/stage1.png", entrancePosition1, enemies1, "Area 1", friend1, staticEntity1);
+=======
+	enemies1.push_back(area1Boss1);
+	// boss1.push_back(area1Boss1);
+	area1 = new Area(area2, "images/areas/area1.png", "audio/forest.wav", "images/stages/stage1.png", entrancePosition1, enemies1, "Area1", friend1);
+>>>>>>> 968422c0dd9b2a84e38f157f92725f8824726e48
 	currentArea = area1;
 }
 
@@ -92,6 +112,7 @@ void ofApp::update()
 			}
 			else if (currentState->getNextState() == "Battle")
 			{
+				battleState->flag=false;
 				battleState->startBattle(overworldState->getEnemy());
 				currentState = battleState;
 			}
@@ -103,7 +124,7 @@ void ofApp::update()
 			else if (currentState->getNextState() == "Win")
 			{
 				overworldState->getEnemy()->kill();
-				if (currentArea->getRemainingEnemies() == 0)
+				if ((currentArea->getRemainingEnemies() == 0)&&(currentArea->BossIsDead))
 				{
 					if (currentArea->getNextArea() == NULL)
 					{
