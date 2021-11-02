@@ -35,5 +35,4 @@ class OverworldState : public State
         void reset();
         PauseState *pauseState;
         int enemigo=0;
-
     };

@@ -9,7 +9,7 @@ Area::Area(Area *nextArea, string areaImagePath, string areaMusicPath, string ar
     this->entrancePosition = entrancePosition;
     this->enemies = enemies;
     this->name = name;
-    this->friends = friends;
+    this->friends=friends;
 }
 
 void Area::resetEnemies(){
